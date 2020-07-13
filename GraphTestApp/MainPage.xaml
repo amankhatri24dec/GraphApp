@@ -1,0 +1,59 @@
+﻿<Page
+   x:Class="GraphTestApp.MainPage"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   xmlns:local="using:GraphTestApp"
+   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+   xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+   xmlns:providers="using:Microsoft.Toolkit.Graph.Providers"
+   xmlns:wgt="using:Microsoft.Toolkit.Graph.Controls"  
+   mc:Ignorable="d"
+   Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Interactivity:Interaction.Behaviors>
+        <providers:InteractiveProviderBehavior x:Name="MsalProvider" />
+    </Interactivity:Interaction.Behaviors>
+
+    <Grid>
+        <NavigationView x:Name="NavView"
+           IsSettingsVisible="False"
+           ItemInvoked="NavView_ItemInvoked">
+
+            <NavigationView.Header>
+                <wgt:LoginButton x:Name="Login" 
+                                VerticalAlignment="Top" 
+                                HorizontalAlignment="Right" />
+            </NavigationView.Header>
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Home" x:Name="Home" Tag="home">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph=""/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Profile" x:Name="Calendar" Tag="calendar">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE77B;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Calendar" x:Name="CalendarEvents" Tag="CalendarEvents">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph=""/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Meeting" x:Name="Meeting" Tag="Meeting">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE717;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+
+            <StackPanel>
+                <controls:InAppNotification x:Name="Notification" ShowDismissButton="true" />
+                <Frame x:Name="RootFrame" Margin="24, 0" />
+            </StackPanel>
+        </NavigationView>
+    </Grid>
+</Page>
